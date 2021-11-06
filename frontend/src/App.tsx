@@ -1,11 +1,13 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import { getHouseByName, getHouses } from "./Api/get";
 
 function App() {
-  fetch("/api/houses")
-    .then((res) => res.json())
-    .then((x) => console.log(x));
+  const [houses, setHouses] = useState();
+
+  useEffect(() => getHouseByName("House", setHouses), []);
+
+  console.log(houses);
   return <div className="App">Something</div>;
 }
 
